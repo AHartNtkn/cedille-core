@@ -2,7 +2,7 @@
 
 This is a modification of [MaiaVictor's](https://github.com/MaiaVictor) [Cedille-Core](https://github.com/MaiaVictor/cedille-core) implementation which adds support for [Dhall](https://github.com/dhall-lang/dhall-haskell)-style "IO". See MaiaVictor's original repository for more information.
 
-I mainly made this as a simple prototype to explore usability issues. I'll spend some time in the future making a small library for this language, but without some facilities for producing certificates for checked and evaluated files, this isn't practically efficient enough. However, if this is to be used as some sort of standard for interchanging specification of functions, this is the right way of doing imports and dependancies, in my opinion. See the [Dhall tutorial](https://hackage.haskell.org/package/dhall-1.12.0/docs/Dhall-Tutorial.html#g:3) for more information.
+I mainly made this as a simple prototype to explore usability issues. I'll spend some time in the future making a small library for this language, but without some facilities for producing certificates for checked and evaluated files, this isn't practically efficient enough. However, if something like this is to be used as some sort of standard for interchanging specification of functions (a la [Morte](http://www.haskellforall.com/2014/09/morte-intermediate-language-for-super.html)), this is the right way to do imports and dependancies, in my opinion. See the [Dhall tutorial](https://hackage.haskell.org/package/dhall-1.12.0/docs/Dhall-Tutorial.html#g:3) for more information.
 
 ## IO Usage
 
