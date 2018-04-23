@@ -8,7 +8,7 @@ I mainly made this as a simple prototype to explore usability issues. I'll spend
 
 This version now supports references to file names directly within files by surrounding them with apostrophes. Those file names will then be interpreted as the contents of the files they refer to. For example, in the example's folder is the file `and.ced` which references `Bool.ced` using `'Bool'`. After the main file is compiled, one can run `main "//'and' 'true' 'false'"` in the examples directory, getting back the normal-form of false as an output.
 
-In general, text can be piled into the binary executable to get some output.
+In general, text can be piped into the binary executable to get some output.
 
 One can check types using the `the.ced` file. It contains a simple dependent identity type which takes a type `T` and an element `t` of type `T`. Running `main "//'the' 'Bool' 'true'"` returns basic information about the contents of `true.ced`, but running `main "//'the' 'Nat' 'true'"` gives a null-value for the type since the file doesn't type-check.
 
