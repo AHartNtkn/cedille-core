@@ -4,7 +4,7 @@ import Core
 main :: IO ()
 main = do
   args <- System.Environment.getArgs
-  let val = fromString $ mconcat args
+  let val = fromString $ head args
   ann <- annotate val
 
   putStrLn "[Term]"
