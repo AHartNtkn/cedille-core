@@ -1,22 +1,12 @@
-## Cedille-Core 
+## Cedille-Core Modification
 
-A minimal (600 LOC) programming language capable of proving theorems about its own terms.
+This is a modification of [MaiaVictor's](https://github.com/MaiaVictor) [Cedille-Core](https://github.com/MaiaVictor/cedille-core) implementation which adds support for [Dhall](https://github.com/dhall-lang/dhall-haskell)-style "IO". See MaiaVictor's original repository for more information.
 
-## What that means?
+I mainly made this as a simple prototype to explore usability issues. I'll spend some time in the future making a small library for this language, but without some facilities for producing certificates for checked and evaluated files, this isn't practically efficient enough. However, if this is to be used as some sort of standard for interchanging specification of functions, this is the right way of doing imports and dependancies, in my opinion. See the [Dhall tutorial](https://hackage.haskell.org/package/dhall-1.12.0/docs/Dhall-Tutorial.html#g:3) for more information.
 
-There are big and small programming languages out there. C++ and Haskell are big languages. Other languages, such as [Brainfuck](https://en.wikipedia.org/wiki/Brainfuck), are so simple they could be implemented in [317 Python characters](https://codegolf.stackexchange.com/a/3085/7607). The [Lambda Calculus](https://en.wikipedia.org/wiki/Lambda_calculus) is popular for being a simple language that serves as the foundation of many functional programming languages.
+## IO Usage
 
-Despite being turing-complete, there is one thing those languages can't do: expressing and proving mathematical theorems about its own terms. The few languages that can do that are rather big: [Idris](https://www.idris-lang.org/), [Agda](https://en.wikipedia.org/wiki/Agda_(programming_language)), [Coq](https://coq.inria.fr/) and [Isabelle](https://isabelle.in.tum.de/) are examples. Some languages like the [Calculus of Constructions](https://en.wikipedia.org/wiki/Calculus_of_constructions) (such as implemented on [Haskell-Morte-Library](https://github.com/Gabriel439/Haskell-Morte-Library)) are small and capable of expressing and proving mathematical theorems about its own terms, but, since their expressivity is very limited, they're not useful for proving useful properties about everyday programs and applications. Until recently, we had no language that was both small and featured practical theorem proving.
+This version now supports references to file names directly within files by surrounding them with apostrophes. Those file names will then be interpreted as the contents of the files they refer to. For example, in the example's folder are the files 'true.ced' 'false.ced' and 'and.ced'. After the main file is compiled, one can run `main "//'and' 'true' 'false'" in the examples directory, getting back the normal-form of false as an output.
 
-Cedille is a language developed by [Aaron Stump](http://homepage.divms.uiowa.edu/~astump/), aiming to solve that problem, among others. It is capable of proving useful theorems about its own terms, yet can be implemented in a very small amount of code. Cedille-Core is an attempt at implementing its core as tersely as possible.
+One can check types using the `the.ced` file. It contains a simple dependent identity type which takes a type `T` and an element `t` of type `T`. Running `main "//'the' 'Bool' 'true'"` returns basic information about the contents of `true.ced`, but running `main "//'the' 'Nat' 'true'"` gives a null-value for the type since the file doesn't type-check.
 
-## Typing rules
-
-
-The rules are implemented as described on [this](spec.pdf) paper. Here is a preview:
-
-![rules.png](rules.png)
-
-## Disclaimer
-
-This is just an initial attempt. It is fully untested, probably bug-ridden, certainly contains a lot of typos, etc. In fact, I'm still in the process of understanding Aaron's work, so chances are it has even deeper misunderstandings that could require major rewrites. This currently serves mostly as an initial step to better understand his work.
